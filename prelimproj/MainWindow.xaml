@@ -1,0 +1,258 @@
+﻿<Window x:Class="prelimproj.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:prelimproj"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <!-- Dark mode color scheme -->
+        <LinearGradientBrush x:Key="DarkBackground" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#1E1E1E" Offset="0"/>
+            <GradientStop Color="Brown" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="LightForeground" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="ButtonBackground" Color="#2E2E2E"/>
+        <SolidColorBrush x:Key="ButtonForeground" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="DarkBackgroundColor" Color="#333333"/>
+        <SolidColorBrush x:Key="LightTextColor" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="DarkButtonColor" Color="#555555"/>
+        <!-- Style for buttons -->
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource ButtonBackground}"/>
+            <Setter Property="Foreground" Value="{StaticResource ButtonForeground}"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ButtonBackground}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#4E4E4E"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#3E3E3E"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="CustomListBoxStyle" TargetType="ListBox">
+            <Setter Property="Background" Value="{StaticResource DarkBackground}"/>
+            <Setter Property="Foreground" Value="{StaticResource LightForeground}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ButtonBackground}"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#444444"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="Transparent" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#666666"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="OrangeButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#444444"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="Transparent" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFA500"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="GrayToBlueButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#444444"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="Transparent" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#7785cc"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BlackButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#444444"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="Transparent" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Black"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="RedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#444444"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="Transparent" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#b30000"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid x:Name ="TheThing" Background="{StaticResource DarkBackground}">
+        <!--<Grid x:Name="GameInterface" Visibility="Visible" RenderTransformOrigin="0.501,0.538"> -->
+        <Grid x:Name="GameInterface" Visibility="Visible" RenderTransformOrigin="0.501,0.538">
+            <!-- Result Label -->
+            <Label Content="0" HorizontalAlignment="Left" Margin="391,130,0,0" VerticalAlignment="Top" x:Name="Result" Foreground="FloralWhite"/>
+            <Grid  x:Name="GameInterfaceOption1" Visibility="Visible" >
+                <Button Content="0" HorizontalAlignment="Left" Margin="174,0,0,0" VerticalAlignment="Center" Height="47" Width="52" x:Name="Button128" Click="BinaryButtonClick" Style="{StaticResource CustomButtonStyle}"/>
+                <Button Content="0" HorizontalAlignment="Left" Margin="231,0,0,0" VerticalAlignment="Center" Height="47" Width="52" x:Name="Button64" Click="BinaryButtonClick" Style="{StaticResource CustomButtonStyle}"/>
+                <Button Content="0" HorizontalAlignment="Left" Margin="288,0,0,0" VerticalAlignment="Center" Height="47" Width="52" x:Name="Button32" Click="BinaryButtonClick" Style="{StaticResource CustomButtonStyle}"/>
+                <Button Content="0" HorizontalAlignment="Left" Margin="345,0,0,0" VerticalAlignment="Center" Height="47" Width="52" x:Name="Button16" Click="BinaryButtonClick" Style="{StaticResource CustomButtonStyle}"/>
+                <Button Content="0" HorizontalAlignment="Left" Margin="402,0,0,0" VerticalAlignment="Center" Height="47" Width="52" x:Name="Button8" Click="BinaryButtonClick" Style="{StaticResource CustomButtonStyle}"/>
+                <Button Content="0" HorizontalAlignment="Left" Margin="459,0,0,0" VerticalAlignment="Center" Height="47" Width="52" x:Name="Button4" Click="BinaryButtonClick" Style="{StaticResource CustomButtonStyle}"/>
+                <Button Content="0" HorizontalAlignment="Left" Margin="516,0,0,0" VerticalAlignment="Center" Height="47" Width="52" x:Name="Button2" Click="BinaryButtonClick" Style="{StaticResource CustomButtonStyle}"/>
+                <Button Content="0" HorizontalAlignment="Left" Margin="573,0,0,0" VerticalAlignment="Center" Height="47" Width="52" x:Name="Button1" Click="BinaryButtonClick" Style="{StaticResource CustomButtonStyle}"/>
+            </Grid>
+            <Grid  x:Name="GameInterfaceOption2" Visibility="Hidden" >
+                <TextBox HorizontalAlignment="Center" Margin="0,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"  x:Name="TextBoxOption" TextChanged="textchange"/>
+
+            </Grid>
+
+
+            <!-- Labels under buttons -->
+            <Grid x:Name="LabelsOnTheButtons" Visibility="Hidden">
+                <Label Content="128" HorizontalAlignment="Left" Margin="188,253,0,0" VerticalAlignment="Top" />
+                <Label Content="64" HorizontalAlignment="Left" Margin="252,253,0,0" VerticalAlignment="Top" />
+                <Label Content="32" HorizontalAlignment="Left" Margin="305,253,0,0" VerticalAlignment="Top" />
+                <Label Content="16" HorizontalAlignment="Left" Margin="362,253,0,0" VerticalAlignment="Top" />
+                <Label Content="8" HorizontalAlignment="Left" Margin="422,253,0,0" VerticalAlignment="Top" />
+                <Label Content="4" HorizontalAlignment="Left" Margin="478,253,0,0" VerticalAlignment="Top" />
+                <Label Content="2" HorizontalAlignment="Left" Margin="536,253,0,0" VerticalAlignment="Top" />
+                <Label Content="1" HorizontalAlignment="Left" Margin="591,253,0,0" VerticalAlignment="Top" />
+            </Grid>
+
+            <Grid x:Name="TheGameParts" Visibility="Hidden">
+                <Label Content="0" HorizontalAlignment="Center" Margin="0,34,0,0" VerticalAlignment="Top" x:Name="Timer" Foreground="White"/>
+                <Label Content="0" HorizontalAlignment="Center" Margin="0,78,0,0" VerticalAlignment="Top" x:Name="GameNum" Foreground="White"/>
+                <Label Content="0" HorizontalAlignment="Left" Margin="618,34,0,0" VerticalAlignment="Top" x:Name="Score" Foreground="White"/>
+                <Label Content="0" HorizontalAlignment="Left" Margin="618,65,0,0" VerticalAlignment="Top" x:Name="Round" Foreground="White"/>
+            </Grid>
+
+
+            <Grid x:Name="EndScreen" Visibility="Hidden">
+                <TextBox x:Name="EndScreenTextBox" HorizontalAlignment="Center" Margin="0,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="EndScreenEnterButton" Content="Enter" HorizontalAlignment="Center" Margin="0,84,0,0" VerticalAlignment="Top" Click="EnterLeaderBoardButtonClick"/>
+                <Label x:Name="EndScreenTimePlayedLabel" Content="TimePlayed" HorizontalAlignment="Left" Margin="183,66,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="EndScreenScoreLabel" Content="Score" HorizontalAlignment="Left" Margin="183,104,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="EndScreenDifficultyLabel" Content="Difficulty" HorizontalAlignment="Left" Margin="183,35,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="EndScreenRoundsLabel" Content="Rounds" HorizontalAlignment="Left" Margin="183,135,0,0" VerticalAlignment="Top"/>
+                <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="501,26,122,264"  x:Name="EndScreenLeaderboard" Style="{StaticResource CustomListBoxStyle}" FontSize="9"/>
+            </Grid>
+
+
+            <!-- <Label Content="0" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" x:Name="Result_Copy"/>  -->
+        </Grid>
+
+        <Grid x:Name ="Settings" Visibility="Hidden">
+            <Button Content="" HorizontalAlignment="Left" Margin="498,109,0,0" VerticalAlignment="Top" Height="50" Width="64"  x:Name="GameControlSelect"  Click="GameControlSelectButtonclick"/>
+            <Button Content="" HorizontalAlignment="Left" Margin="498,0,0,0" VerticalAlignment="Center" Height="50" Width="64"  x:Name="DifficultySelect"  Click="DifficultySelectButtonclick"/>
+            <Button Content="Back" HorizontalAlignment="Left" Margin="498,262,0,0" VerticalAlignment="Top" Height="51" Width="64" Click="BackToMenuButtonClick"/>
+
+
+        </Grid>
+
+        <Grid x:Name ="LeaderBoard" Visibility="Visible">
+            <TextBlock Text="Leaderboard" FontSize="20" FontWeight="Bold" Margin="36,25,583,325"/>
+            <Button Content="Back to Menu" Click="BackToMenuButtonClick" Margin="129,265,487,100" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.412"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="290,42,290,180"  x:Name="FirstLeaderboard" Style="{StaticResource CustomListBoxStyle}"/>
+            <Button Content="->" HorizontalAlignment="Left" Margin="660,55,0,0" VerticalAlignment="Top" />
+        </Grid>
+
+        <Grid x:Name ="Menu"  Visibility="Visible">
+            <Button Content="PLAY" HorizontalAlignment="Center" Margin="0,262,0,0" VerticalAlignment="Top" Height="69" Width="115" RenderTransformOrigin="0.544,0.568" Click="PlayButton_Click"/>
+            <Button Content="LEADERBOARD" HorizontalAlignment="Left" Margin="222,262,0,0" VerticalAlignment="Top" Height="54" Width="90" RenderTransformOrigin="0.544,0.568" Click="LeaderboardButton_Click"/>
+            <Button Content="SETTINGS" HorizontalAlignment="Left" Margin="486,262,0,0" VerticalAlignment="Top" Height="54" Width="90" RenderTransformOrigin="0.544,0.568" Click="SettingsButton_Click"/>
+
+
+        </Grid>
+
+
+    </Grid>
+</Window>
+
+
+
+
+
+
+
+
+
+
+
