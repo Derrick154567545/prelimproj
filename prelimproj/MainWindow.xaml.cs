@@ -27,6 +27,9 @@ namespace prelimproj
     /// </summary>
     public partial class MainWindow : Window
     {
+        //IAMTRYINGTOGITHUB
+        //please work
+
         int currentscore = 0;
         int gamestart = 0;
         string difficulty = "Easy"; //Easy, Medium, Hard, Nightmare
